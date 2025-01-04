@@ -1,0 +1,73 @@
+import streamlit as st
+
+# CSS for styling with typewriting effect and professional colors
+st.markdown("""
+    <style>
+        body {
+            background-color: #ecf0f1;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            text-align: center;
+            font-size: 40px;
+            color: #2c3e50;
+            margin-top: 100px;
+            animation: typing 4s steps(40) 1s 1 normal both;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .sub-header {
+            text-align: center;
+            font-size: 24px;
+            color: #34495e;
+            margin-top: 20px;
+        }
+        .input-box {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 30px;
+            background-color: #fff;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Page Title with typewriting effect
+st.markdown('<p class="header">بِسْمِ ٱللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>', unsafe_allow_html=True)
+
+# Title Input Box
+st.markdown('<p class="sub-header">Enter the title:</p>', unsafe_allow_html=True)
+title = st.text_input('', placeholder="Enter your title here", key="title", max_chars=100, label_visibility="collapsed")
+
+# Submit Button
+submit_button = st.button("Submit", key="submit")
+
+# Action on Submit
+if submit_button:
+    if title:
+        st.success(f"Title Submitted: {title}")
+    else:
+        st.error("Please enter a title before submitting.")
